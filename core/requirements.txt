@@ -1,0 +1,11 @@
+openai-whisper==20230918
+torch==2.1.0
+numpy==1.26.0
+pydub==0.25.1
+webrtcvad==2.0.10
+langchain==0.0.320
+fastapi==0.103.2
+uvicorn==0.23.2
+python-dotenv==1.0.0
+stripe==7.1.0
+pymongo==4.5.0

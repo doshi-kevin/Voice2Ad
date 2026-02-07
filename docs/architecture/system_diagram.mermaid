@@ -1,0 +1,26 @@
+graph TD
+    subgraph "Mall Physical Layer"
+        MIC[Microphone Array] -->|Stream| AUDIO_INGEST[Audio Ingest Service]
+        SCREENS[Digital Screens]
+    end
+
+    subgraph "Core Agent Layer (Dedalus)"
+        AUDIO_INGEST -->|Raw Audio| WHISPER[Whisper STT Model]
+        WHISPER -->|Text| INTENT[Intent Classification Engine]
+        INTENT -->|Context: High urgency| SAFETY[Safety Override Protocol]
+        INTENT -->|Context: Commercial| AD_GEN[Ad Generation Pipeline]
+        
+        SAFETY -->|Priority Signal| COMPOSITOR[Visual Compositor]
+        AD_GEN -->|Asset IDs| COMPOSITOR
+    end
+
+    subgraph "Frontend / Visual Layer"
+        COMPOSITOR -->|WebSocket| THREE_JS[Three.js Scene Renderer]
+        THREE_JS -->|Render| SCREENS
+    end
+
+    subgraph "Sponsor Tech Stack"
+        INTENT -.->|Log Analytics| MONGODB[MongoDB Atlas]
+        AD_GEN -.->|GenAI| OPENAI[OpenAI / Gemini API]
+        COMPOSITOR -.->|Payment| STRIPE[Stripe Connect]
+    end
